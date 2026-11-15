@@ -47,6 +47,26 @@ def optimizer_step(model, optimizer, scaler, amp=False):
     return norm, skipped
 
 
+def training_loss(model, batch, config, device):
+    """Autocast forward passes only; all segmentation/consistency math is float32.
+
+    CUDA rejects probability-space BCE inside autocast even when its inputs were
+    explicitly converted to float32. Exiting the context is therefore essential.
+    """
+    dual_view = config["data"]["dual_view"] or config["loss"]["consistency"]
+    with torch.autocast(device_type=device.type, enabled=config["train"]["amp"]):
+        logits = model(batch["image"])
+        alternate = model(contrast_view(batch["image"], batch["valid"])) if dual_view else None
+    loss, terms = objective(logits.float(), batch, config)
+    if alternate is not None:
+        alternate_loss, alternate_terms = objective(alternate.float(), batch, config)
+        js = js_divergence(logits.float(), alternate.float(), batch["valid"])
+        loss = (loss + alternate_loss) / 2 + config["loss"]["consistency"] * js
+        terms = {key: (value + alternate_terms[key]) / 2 for key, value in terms.items()}
+        terms["consistency"] = float(js.detach())
+    return loss, terms
+
+
 def validate_model(model, loader, device):
     model.eval()
     positive_dice, foreground_dice, negative_fp = [], [], []
@@ -151,17 +171,7 @@ def train(config, resume=False):
         for batch in loader:
             batch = move_batch(batch, device)
             optimizer.zero_grad(set_to_none=True)
-            with torch.autocast(device_type=device.type, enabled=config["train"]["amp"]):
-                logits = model(batch["image"])
-                # Losses use float32, including during CUDA autocast.
-                loss, terms = objective(logits.float(), batch, config)
-                if settings["dual_view"] or config["loss"]["consistency"]:
-                    alternate = model(contrast_view(batch["image"], batch["valid"]))
-                    alternate_loss, alternate_terms = objective(alternate.float(), batch, config)
-                    js = js_divergence(logits.float(), alternate.float(), batch["valid"])
-                    loss = (loss + alternate_loss) / 2 + config["loss"]["consistency"] * js
-                    terms = {key: (value + alternate_terms[key]) / 2 for key, value in terms.items()}
-                    terms["consistency"] = float(js.detach())
+            loss, terms = training_loss(model, batch, config, device)
             if not torch.isfinite(loss):
                 raise FloatingPointError("Nonfinite loss; stop and inspect masks/configuration")
             scaler.scale(loss).backward()

@@ -8,6 +8,8 @@ The professor-approved main scope is binary fracture-region segmentation. The nu
 
 The institute A100 CUDA environment has been established in an isolated project directory. A full-data runtime preflight used approximately 940 MB allocated / 1,244 MB reserved PyTorch memory. The common study budget is 16 epochs, fixed before comparative test evaluation. The original first attempt stopped during baseline training because strict clipping incorrectly rejected a recoverable FP16 overflow. Its artifacts and checkpoint are preserved separately and will not be included in comparisons. The corrected code lets GradScaler skip overflowing updates, logs skipped steps, and retains the strict float32 nonfinite-gradient guard.
 
+The local suite now has **50 passing tests**. A further CUDA scope check verified all seven variants containing local BCE/consistency on real X-ray batches: model forward passes are autocast, while all loss arithmetic runs outside autocast in float32. The first square-control attempt stopped before a completed epoch/checkpoint and is preserved separately. Completed U-Net/ICI results remain unchanged; the study resumes the remaining configurations using the corrected scope. `cuda_loss_scope_checks.json` and `runtime_corrections.json` document this operational correction, not an accuracy improvement.
+
 Final comparative results are not yet claimed in this history file. The original initial-verification notes below refer to the earlier multiclass planning stage, not the current binary-study scope.
 
 ## Initial completed checks

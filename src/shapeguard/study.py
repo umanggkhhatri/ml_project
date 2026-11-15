@@ -40,6 +40,7 @@ def run_study(config_directory="configs/gpu", output="results/binary_study", inc
             config["seed"] = seed
         run = Path(config["train"]["output"]) / config["name"] / f"seed_{config['seed']}"
         entry = {"experiment": config["name"], "seed": config["seed"], "status": "running", "config": str(path)}
+        previous = next((r for r in status["runs"] if (r["experiment"], r["seed"]) == (entry["experiment"], entry["seed"])), None)
         status["active"] = entry
         status["completed"] = False
         save_json(status_path, status)
@@ -60,7 +61,9 @@ def run_study(config_directory="configs/gpu", output="results/binary_study", inc
                 evaluated = evaluate(run / "best.pt", "cuda" if config["device"] == "cuda" else config["device"], robustness=path.stem in {"ici", "proposed", "contrast_control", "full"} and seed is None)
             figures(run / "best.pt", evaluated)
             evaluations.append(str(evaluated))
-            entry.update(status="completed", seconds=time.perf_counter() - start, evaluation=str(evaluated))
+            elapsed = time.perf_counter() - start
+            entry.update(status="completed", seconds=previous["seconds"] if complete and previous else elapsed,
+                         seconds_this_invocation=elapsed, reused_existing_run=complete, evaluation=str(evaluated))
             status["runs"] = [r for r in status["runs"] if (r["experiment"], r["seed"]) != (entry["experiment"], entry["seed"])] + [entry]
             save_json(status_path, status)
             print(json.dumps(entry), flush=True)

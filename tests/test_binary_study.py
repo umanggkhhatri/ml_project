@@ -81,3 +81,29 @@ def test_float32_nonfinite_gradients_still_fail():
     model.weight.grad.fill_(float("inf"))
     with pytest.raises(RuntimeError, match="non-finite"):
         optimizer_step(model, optimizer, scaler, amp=False)
+
+
+def test_probability_losses_run_outside_autocast(monkeypatch):
+    import shapeguard.engine.train as engine
+    config = load_config("configs/full.yaml")
+    config["model"]["widths"] = [2, 4, 8, 16, 32]
+    config["train"]["amp"] = True
+    target = torch.zeros((2, 32, 32), dtype=torch.long)
+    target[0, 12:16, 6:26] = 1
+    batch = {"image": torch.rand((2, 1, 32, 32)), "mask": target,
+             "valid": torch.ones_like(target, dtype=torch.bool),
+             "instances": [(target[0] == 1)[None], torch.zeros((0, 32, 32), dtype=torch.bool)]}
+    original = engine.objective
+    calls = []
+
+    def checked(logits, batch, config):
+        assert not torch.is_autocast_enabled("cpu")
+        assert logits.dtype == torch.float32
+        calls.append(True)
+        return original(logits, batch, config)
+
+    monkeypatch.setattr(engine, "objective", checked)
+    model = build_model(config)
+    loss, _ = engine.training_loss(model, batch, config, torch.device("cpu"))
+    loss.backward()
+    assert len(calls) == 2 and torch.isfinite(loss)
