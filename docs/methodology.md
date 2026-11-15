@@ -59,3 +59,5 @@ No gain is promised. A component that fails should be reported as a negative res
 ## Resume qualification
 
 Checkpoint resume restores model, optimizer, scaler, main-process and sampler RNG states. Exact resume-versus-uninterrupted tests use zero data-loader workers. With persistent multiprocessing workers, their augmentation RNG streams are not checkpointed, so a resumed run can have different augmentations from an uninterrupted one. Fresh full runs use fixed seeds and the same worker count; cross-device bit-identical results are not promised.
+
+CUDA FP16 overflow handling follows GradScaler's unscale/skip/update sequence. Gradient clipping is allowed to observe nonfinite gradients during AMP because unscale has already marked those updates to be skipped. Non-AMP nonfinite gradients remain fatal. Training logs count skipped and successful optimizer updates. The failed first baseline attempt is excluded from the clean comparative study; all methods use the corrected handling and the same fresh-start protocol.

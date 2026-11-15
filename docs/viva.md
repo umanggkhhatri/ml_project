@@ -28,7 +28,7 @@ Use actual final tables for numerical answers. This guide deliberately supplies 
 
 **How are checkpoints chosen?** By validation fracture-positive image Dice, never test performance. The common 16-epoch budget was fixed after a runtime preflight, before comparative test evaluation.
 
-**What does AMP change?** CUDA autocast reduces activation precision for supported operations; losses are evaluated in float32 and GradScaler protects gradients. Parameters/optimizer master state remain float32. Inference timing is separately measured in float32.
+**What does AMP change?** CUDA autocast reduces activation precision for supported operations; losses are evaluated in float32 and GradScaler protects gradients. Ordinary FP16 overflows cause skipped optimizer updates and a reduced scale, not corrupted weights or a forced update. Skipped steps are logged; non-AMP nonfinite gradients remain fatal. Parameters/optimizer master state remain float32. Inference timing is separately measured in float32.
 
 ## Base paper and contributions
 

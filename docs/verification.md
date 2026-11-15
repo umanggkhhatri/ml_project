@@ -1,8 +1,16 @@
-# Implementation verification
+# Implementation verification history
 
 Verified locally on Apple M1 / macOS with Python 3.11.17 and the dependency versions recorded in `uv.lock` and run environment artifacts.
 
-## Completed checks
+## Binary-study update
+
+The professor-approved main scope is binary fracture-region segmentation. The local suite now has **46 passing tests**, including explicit CUDA index selection, completed-document limits, and GradScaler overflow behavior. Ruff checks pass. Submission identity is Umang Khatri / 2403AI03; revised PPT requirements are pending.
+
+The institute A100 CUDA environment has been established in an isolated project directory. A full-data runtime preflight used approximately 940 MB allocated / 1,244 MB reserved PyTorch memory. The common study budget is 16 epochs, fixed before comparative test evaluation. The original first attempt stopped during baseline training because strict clipping incorrectly rejected a recoverable FP16 overflow. Its artifacts and checkpoint are preserved separately and will not be included in comparisons. The corrected code lets GradScaler skip overflowing updates, logs skipped steps, and retains the strict float32 nonfinite-gradient guard.
+
+Final comparative results are not yet claimed in this history file. The original initial-verification notes below refer to the earlier multiclass planning stage, not the current binary-study scope.
+
+## Initial completed checks
 
 - 31 pytest tests pass, including polygon validation, corrupted-source quarantine, duplicate-file handling, mask precedence, padding alignment, annotation freezing, loss gradients, empty-mask metrics, one-to-one instance matching, tiny-sample overfitting, and exact CPU resume-versus-uninterrupted dual-view training.
 - Ruff checks pass.
@@ -30,7 +38,7 @@ Group-disjoint split from seed 42:
 
 Ratios are approximate because duplicate groups are indivisible. These are not verified patient-level splits. Anatomy distributions are saved separately.
 
-## Not completed / not claimed
+## Initial scope: not completed / not claimed
 
 - No accepted real bone annotations at initial verification. Twenty threshold **proposals** exist; inspection shows they need correction.
 - No main multiclass baseline, comparative study, ablation results, or proven improvement.

@@ -33,6 +33,20 @@ def move_batch(batch, device):
     return {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
 
 
+def optimizer_step(model, optimizer, scaler, amp=False):
+    """Let GradScaler skip ordinary FP16 overflows; keep the strict float32 guard.
+
+    unscale_ records nonfinite gradients before clipping. scaler.step then skips
+    the optimizer update on overflow and scaler.update reduces the scale.
+    """
+    scaler.unscale_(optimizer)
+    norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0, error_if_nonfinite=not amp)
+    skipped = amp and not bool(torch.isfinite(norm))
+    scaler.step(optimizer)
+    scaler.update()
+    return norm, skipped
+
+
 def validate_model(model, loader, device):
     model.eval()
     positive_dice, foreground_dice, negative_fp = [], [], []
@@ -130,6 +144,8 @@ def train(config, resume=False):
         model.train()
         totals = defaultdict(float)
         examples = 0
+        gradient_examples = 0
+        skipped_steps = 0
         synchronize(device)
         start = time.perf_counter()
         for batch in loader:
@@ -149,14 +165,14 @@ def train(config, resume=False):
             if not torch.isfinite(loss):
                 raise FloatingPointError("Nonfinite loss; stop and inspect masks/configuration")
             scaler.scale(loss).backward()
-            scaler.unscale_(optimizer)
-            norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0, error_if_nonfinite=True)
-            scaler.step(optimizer)
-            scaler.update()
+            norm, skipped = optimizer_step(model, optimizer, scaler, config["train"]["amp"])
+            skipped_steps += int(skipped)
             n = len(batch["image"])
             examples += n
             totals["loss"] += float(loss.detach()) * n
-            totals["gradient_norm"] += float(norm) * n
+            if torch.isfinite(norm):
+                totals["gradient_norm"] += float(norm) * n
+                gradient_examples += n
             for key, value in terms.items():
                 totals[key] += value * n
         synchronize(device)
@@ -169,6 +185,9 @@ def train(config, resume=False):
         best, stale = (score, 0) if improved else (best, stale + 1)
         record = {"epoch": epoch, **{k: v / examples for k, v in totals.items()},
                   **metrics, "train_seconds": elapsed, "best_score": best}
+        record["gradient_norm"] = totals["gradient_norm"] / gradient_examples if gradient_examples else np.nan
+        record["amp_skipped_steps"] = skipped_steps
+        record["successful_optimizer_steps"] = len(loader) - skipped_steps
         history.append(record)
         payload = {"model": model.state_dict(), "optimizer": optimizer.state_dict(), "scaler": scaler.state_dict(),
                    "config": config, "provenance": provenance, "epoch": epoch, "best": best, "stale": stale,

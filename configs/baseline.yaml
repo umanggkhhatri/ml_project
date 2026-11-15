@@ -10,6 +10,7 @@ data:
 model:
   architecture: unet
 train:
+  output: runs/binary_study
   epochs: 16
   batch_size: 4
   patience: 16

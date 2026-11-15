@@ -23,6 +23,8 @@ uv run shapeguard smoke --device cuda
 
 Use the scheduler's assigned GPU environment. If an explicit device selection is required, set `CUDA_VISIBLE_DEVICES` according to the allocation, not arbitrary available indices.
 
+For long SSH sessions use a keepalive-enabled, institute-approved connection or a persistent job/session mechanism. A lost monitoring connection must not trigger a second GPU process: verify ownership and identity of the recorded process first. The study records an active status and can resume checkpoints; never stop other users' jobs to recover yours.
+
 ## Pilot
 
 Copy a config, explicitly set `device: cuda`, and choose batch size from measured VRAM. Start with float32; set `train.amp: true` only after CUDA smoke tests pass. Measure one complete epoch and validation before budgeting the study. Defaults are deliberately conservative (batch 2, widths 16/32/64/128/256).

@@ -106,11 +106,11 @@ Only the epoch limit may change when resuming. Changed data/configuration is rej
 ## Evaluate and produce report-ready figures
 
 ```bash
-uv run shapeguard evaluate --checkpoint runs/proposed/seed_42/best.pt --robustness
-uv run shapeguard figures --checkpoint runs/proposed/seed_42/best.pt --evaluation runs/proposed/seed_42/evaluation_test
-uv run shapeguard compare --evaluations runs/ici_2d_adaptation/seed_42/evaluation_test runs/proposed/seed_42/evaluation_test --output results/comparison.csv
-uv run shapeguard bootstrap --first runs/ici_2d_adaptation/seed_42/evaluation_test/fracture_metrics.csv --second runs/proposed/seed_42/evaluation_test/fracture_metrics.csv --positive-only --output results/paired_bootstrap.json
-uv run shapeguard predict --checkpoint runs/proposed/seed_42/best.pt --image /path/to/xray.jpg --output runs/demo
+uv run shapeguard evaluate --checkpoint runs/binary_study/proposed/seed_42/best.pt --robustness
+uv run shapeguard figures --checkpoint runs/binary_study/proposed/seed_42/best.pt --evaluation runs/binary_study/proposed/seed_42/evaluation_test
+uv run shapeguard compare --evaluations runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test runs/binary_study/proposed/seed_42/evaluation_test --output results/comparison.csv
+uv run shapeguard bootstrap --first runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/fracture_metrics.csv --second runs/binary_study/proposed/seed_42/evaluation_test/fracture_metrics.csv --positive-only --output results/paired_bootstrap.json
+uv run shapeguard predict --checkpoint runs/binary_study/proposed/seed_42/best.pt --image /path/to/xray.jpg --output runs/demo
 ```
 
 Evaluate every run before comparison. Results include class metrics, fracture-positive summaries, negative-image false positives, one-to-one matched instance performance, boundary distances, resize audits, parameter counts, synchronized latency, and convolution-only FLOP estimates.

@@ -50,3 +50,34 @@ def test_cuda_selection_has_explicit_index(monkeypatch):
     assert choose_device("cuda") == torch.device("cuda", 0)
     with pytest.raises(ValueError, match="visible allocation"):
         choose_device("cuda:1")
+
+
+def test_scaler_skips_overflow_without_corrupting_parameters():
+    from shapeguard.engine.train import optimizer_step
+    model = torch.nn.Linear(2, 1)
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+    scaler = torch.amp.GradScaler("cpu", init_scale=16, enabled=True)
+    loss = model(torch.ones((1, 2))).sum()
+    scaler.scale(loss).backward()
+    before = [p.detach().clone() for p in model.parameters()]
+    model.weight.grad.fill_(float("inf"))
+    norm, skipped = optimizer_step(model, optimizer, scaler, amp=True)
+    assert skipped and not torch.isfinite(norm)
+    assert scaler.get_scale() < 16
+    assert all(torch.equal(a, b) for a, b in zip(before, model.parameters()))
+    optimizer.zero_grad(set_to_none=True)
+    scaler.scale(model(torch.ones((1, 2))).sum()).backward()
+    norm, skipped = optimizer_step(model, optimizer, scaler, amp=True)
+    assert not skipped and torch.isfinite(norm)
+    assert not torch.equal(before[0], model.weight)
+
+
+def test_float32_nonfinite_gradients_still_fail():
+    from shapeguard.engine.train import optimizer_step
+    model = torch.nn.Linear(2, 1)
+    optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+    scaler = torch.amp.GradScaler("cpu", enabled=False)
+    model(torch.ones((1, 2))).sum().backward()
+    model.weight.grad.fill_(float("inf"))
+    with pytest.raises(RuntimeError, match="non-finite"):
+        optimizer_step(model, optimizer, scaler, amp=False)
