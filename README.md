@@ -11,6 +11,7 @@ All **14 GPU runs** are complete. The final documents use actual results and exp
 - [Poster PDF](deliverables/2403AI03_MLProject_Poster.pdf) — one page, supplied IIT Patna template.
 - [Editable poster](deliverables/2403AI03_MLProject_Poster.pptx) — one poster slide, not a slide deck.
 - [Project report](deliverables/2403AI03_MLProject.pdf) — eight pages.
+- [Code/submission archive](deliverables/2403AI03_MLProject_Code.zip) — versioned code, documents and numerical artifacts; no datasets or checkpoints.
 - [Full comparison table](results/binary_study/comparison.csv), [interpretation](docs/results.md), and [public per-run numerical artifacts](results/binary_study/experiments/).
 - [Viva guide](docs/viva.md) and [mathematical justification](docs/mathematics.md).
 

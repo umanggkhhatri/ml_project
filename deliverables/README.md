@@ -5,6 +5,7 @@
 - `2403AI03_MLProject.pdf`: complete 8-page report.
 - `2403AI03_MLProject_Poster.pdf`: single-page poster matching the uploaded template.
 - `2403AI03_MLProject_Poster.pptx`: editable one-page poster, not a slide deck.
+- `2403AI03_MLProject_Code.zip`: checked source/submission archive, excluding datasets/checkpoints/private driver metadata.
 - `complete_comparison.csv` and `repeat_seed_summary.csv`: actual experiment results.
 - `contribution_analysis.json`: controlled comparisons and conditional uncertainty.
 - `poster_provenance.json`: template/example provenance.
