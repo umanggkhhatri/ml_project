@@ -1,0 +1,6 @@
+extends: ici.yaml
+name: boundary_fixed
+loss:
+  boundary: 0.25
+  boundary_mode: fixed
+  fixed_tau: 3.0

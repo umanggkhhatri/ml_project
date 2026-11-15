@@ -1,0 +1,5 @@
+extends: ../boundary_fixed.yaml
+device: cuda
+train:
+  amp: true
+  cuda_memory_fraction: 0.075

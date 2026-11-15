@@ -1,0 +1,6 @@
+extends: baseline.yaml
+name: multiclass_baseline_optional
+data:
+  task: multiclass
+loss:
+  class_weights: [1.0, 1.0, 10.0]

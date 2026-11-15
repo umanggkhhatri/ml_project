@@ -1,0 +1,5 @@
+extends: ici.yaml
+name: boundary_adaptive
+loss:
+  boundary: 0.25
+  boundary_mode: adaptive

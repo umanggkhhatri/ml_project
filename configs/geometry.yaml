@@ -1,0 +1,5 @@
+extends: ici.yaml
+name: geometry
+loss:
+  center: 0.0
+  geometry: 0.25

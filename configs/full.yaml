@@ -1,0 +1,4 @@
+extends: contrast_control.yaml
+name: full
+loss:
+  consistency: 0.1

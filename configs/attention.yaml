@@ -1,0 +1,4 @@
+extends: baseline.yaml
+name: attention_unet
+model:
+  architecture: attention_unet

@@ -1,0 +1,5 @@
+extends: baseline.yaml
+name: ici_2d_adaptation
+loss:
+  instance: 0.5
+  center: 0.25

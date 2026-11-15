@@ -1,0 +1,4 @@
+extends: geometry.yaml
+name: geometry_square_control
+loss:
+  geometry_mode: square

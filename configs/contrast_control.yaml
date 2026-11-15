@@ -1,0 +1,4 @@
+extends: proposed.yaml
+name: contrast_control
+data:
+  dual_view: true

@@ -1,0 +1,19 @@
+name: baseline
+device: auto
+seed: 42
+data:
+  manifest: data/prepared/manifest.csv
+  task: binary
+  size: 384
+  workers: 4
+  sampling: balanced
+model:
+  architecture: unet
+train:
+  epochs: 16
+  batch_size: 4
+  patience: 16
+loss:
+  ce: 0.5
+  dice: 1.0
+  class_weights: [1.0, 10.0]

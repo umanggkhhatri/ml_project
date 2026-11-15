@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShapeGuard — Bone annotation</title>
+<style>
+body{font:16px system-ui;background:#111827;color:#e5e7eb;margin:24px}button,select,input{font:inherit;margin:5px;padding:7px}canvas{max-width:100%;height:auto;cursor:crosshair;touch-action:none;border:1px solid #475569}#panel{max-width:1100px}#status{white-space:pre-wrap}small{color:#cbd5e1}
+</style>
+<div id="panel">
+<h1>Bone-mask annotation</h1>
+<p>Green = candidate bone; red = existing fracture region. Proposals are not ground truth. Correct every outline before accepting.</p>
+<select id="images"></select><span id="meta"></span><br>
+<button id="previous">Previous</button><button id="next">Next</button>
+<select id="mode"><option value="paint">Paint bone</option><option value="erase">Erase</option><option value="polygon">Bone polygon</option><option value="erasepolygon">Erase polygon</option></select>
+<label>Brush pixels <input id="radius" type="number" min="1" max="200" value="20" style="width:70px"></label>
+<button id="undo">Undo</button><button id="clear">Clear mask</button><button id="draft">Save draft</button><button id="accept">Accept inspected mask</button><br>
+<small>Brush size is in original-image pixels. Polygon: click vertices, then press Enter to close; Escape cancels. Accepted masks cannot be edited in this dataset version.</small>
+<p id="status"></p><canvas id="view"></canvas>
+</div>
+<script>
+const view=document.querySelector('#view'), ctx=view.getContext('2d');
+const mask=document.createElement('canvas'), mctx=mask.getContext('2d',{willReadFrequently:true});
+const color=document.createElement('canvas'), cctx=color.getContext('2d');
+const sel=document.querySelector('#images'), mode=document.querySelector('#mode'), status=document.querySelector('#status');
+let records=[], image=new Image(), fracture=new Image(), active=false, drawing=false, last=null, vertices=[], undo=[], dirty=false, loadedIndex=0, loadToken=0;
+const loadImage=url=>new Promise((resolve,reject)=>{let im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=url});
+function snapshot(){undo.push(mctx.getImageData(0,0,mask.width,mask.height));if(undo.length>8)undo.shift()}
+function point(e){const r=view.getBoundingClientRect();return [(e.clientX-r.left)*view.width/r.width,(e.clientY-r.top)*view.height/r.height]}
+function redraw(){
+ ctx.clearRect(0,0,view.width,view.height);ctx.drawImage(image,0,0);
+ const data=mctx.getImageData(0,0,mask.width,mask.height);for(let i=0;i<data.data.length;i+=4){const on=data.data[i]>127;data.data[i]=40;data.data[i+1]=220;data.data[i+2]=100;data.data[i+3]=on?100:0}cctx.putImageData(data,0,0);ctx.drawImage(color,0,0);
+ ctx.globalAlpha=.5;ctx.drawImage(fracture,0,0);ctx.globalAlpha=1;
+ if(vertices.length){ctx.strokeStyle='#fbbf24';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(...vertices[0]);vertices.slice(1).forEach(p=>ctx.lineTo(...p));ctx.stroke()}
+}
+async function load(){
+ const token=++loadToken;active=false;status.textContent='Loading native-resolution image…';vertices=[];undo=[];dirty=false;
+ const row=records[sel.selectedIndex], id=encodeURIComponent(row.image_id);
+ const [newImage,newFracture,bone]=await Promise.all([loadImage('/image?id='+id),loadImage('/fracture?id='+id),loadImage('/bone?id='+id)]);
+ if(token!==loadToken)return;image=newImage;fracture=newFracture;loadedIndex=sel.selectedIndex;
+ for(const c of [view,mask,color]){c.width=row.width;c.height=row.height}
+ mctx.fillStyle='black';mctx.fillRect(0,0,mask.width,mask.height);mctx.drawImage(bone,0,0);
+ // Render existing fracture mask red with transparent background.
+ const f=document.createElement('canvas');f.width=row.width;f.height=row.height;const fc=f.getContext('2d');fc.drawImage(fracture,0,0);const d=fc.getImageData(0,0,f.width,f.height);for(let i=0;i<d.data.length;i+=4){const on=d.data[i]>0;d.data[i]=255;d.data[i+1]=30;d.data[i+2]=50;d.data[i+3]=on?255:0}fc.putImageData(d,0,0);fracture=f;
+ active=row.bone_status!=='accepted';document.querySelector('#meta').textContent=`${row.width}×${row.height} | ${row.split} | ${row.bone_status}`;
+ status.textContent=active?'Inspect and correct bone proposals. Fracture annotations remain unchanged.':'Accepted annotation: read-only.';redraw();
+}
+function stroke(p){dirty=true;let r=Math.max(1,Number(document.querySelector('#radius').value));mctx.strokeStyle=mode.value==='erase'?'black':'white';mctx.lineWidth=2*r;mctx.lineCap='round';mctx.beginPath();mctx.moveTo(...(last||p));mctx.lineTo(...p);mctx.stroke();mctx.fillStyle=mctx.strokeStyle;mctx.beginPath();mctx.arc(...p,r,0,Math.PI*2);mctx.fill();last=p;redraw()}
+view.onpointerdown=e=>{if(!active)return;e.preventDefault();const p=point(e);if(mode.value.includes('polygon')){vertices.push(p);redraw();return}snapshot();drawing=true;last=p;view.setPointerCapture(e.pointerId);stroke(p)};
+view.onpointermove=e=>{if(drawing)stroke(point(e))};view.onpointerup=()=>{drawing=false;last=null};view.onpointercancel=view.onpointerup;
+document.onkeydown=e=>{if(e.key==='Escape'){vertices=[];redraw()}if(e.key==='Enter'&&active&&vertices.length>=3){snapshot();dirty=true;mctx.fillStyle=mode.value==='erasepolygon'?'black':'white';mctx.beginPath();mctx.moveTo(...vertices[0]);vertices.slice(1).forEach(p=>mctx.lineTo(...p));mctx.closePath();mctx.fill();vertices=[];redraw()}};
+document.querySelector('#undo').onclick=()=>{if(active&&undo.length){dirty=true;mctx.putImageData(undo.pop(),0,0);redraw()}};
+document.querySelector('#clear').onclick=()=>{if(active&&confirm('Clear the candidate bone mask?')){snapshot();dirty=true;mctx.fillStyle='black';mctx.fillRect(0,0,mask.width,mask.height);redraw()}};
+async function save(accepted){if(!active)return;if(accepted&&!confirm('I inspected/corrected this mask and accept it as a student annotation. Continue?'))return;const row=records[loadedIndex];const response=await fetch('/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image_id:row.image_id,png:mask.toDataURL('image/png'),accepted})});const result=await response.json();status.textContent=JSON.stringify(result,null,2);if(response.ok){dirty=false;row.bone_status=accepted?'accepted':'draft';active=!accepted;document.querySelector('#meta').textContent=`${row.width}×${row.height} | ${row.split} | ${row.bone_status}`}}
+document.querySelector('#draft').onclick=()=>save(false);document.querySelector('#accept').onclick=()=>save(true);
+function navigate(index){if((dirty||vertices.length)&&!confirm('Discard unsaved changes? Save a draft first to preserve them.'))return;sel.selectedIndex=index;load()}
+sel.onchange=()=>{const next=sel.selectedIndex;sel.selectedIndex=loadedIndex;navigate(next)};document.querySelector('#next').onclick=()=>{if(loadedIndex<records.length-1)navigate(loadedIndex+1)};document.querySelector('#previous').onclick=()=>{if(loadedIndex>0)navigate(loadedIndex-1)};
+window.onbeforeunload=e=>{if(dirty||vertices.length){e.preventDefault();e.returnValue=''}};
+fetch('/images').then(r=>r.json()).then(data=>{records=data;for(const row of records){let o=document.createElement('option');o.textContent=row.image_id;sel.appendChild(o)}if(records.length)load();else status.textContent='No selected images.'}).catch(e=>status.textContent=String(e));
+</script>
+</html>
