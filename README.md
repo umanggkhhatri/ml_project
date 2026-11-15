@@ -125,16 +125,16 @@ See [GPU guide](docs/gpu.md). Check the assigned GPU/scheduler and create an iso
 
 ## Submission assets
 
-After the study is complete, generate an **8-page report and 10-slide presentation** from actual artifacts:
+After the study is complete, generate an **8-page report and single-page poster** from actual artifacts:
 
 ```bash
 uv sync --extra dev --extra report
-uv run shapeguard deliverables --study results/binary_study --output deliverables --author "Your name" --roll-number "YourRollNo"
+uv run shapeguard deliverables --study results/binary_study --output deliverables
 ```
 
-The builder refuses unfinished studies. CSVs and figures remain the source of every reported number. Component effects are described according to their measured differences and paired intervals, including negative findings. If roll number is omitted, generic filenames and an explicit placeholder are used. No notebook is created. See [experiment checklist](docs/experiments.md).
+The builder refuses unfinished studies. CSVs and figures remain the source of every reported number. Component effects are described according to their measured differences and paired intervals, including negative findings. No notebook or slide deck is created in the configured submission workflow. See [experiment checklist](docs/experiments.md).
 
-Submission identity is stored in `submission.json`. Because revised PPT instructions are awaiting confirmation, use `--report-only` to generate the report independently; presentation generation is blocked until those requirements are resolved. The report filename is `2403AI03_MLProject.pdf`. See [viva guide](docs/viva.md) for conceptual and mathematical preparation.
+Submission identity is stored in `submission.json`. The updated deliverable is a poster based on the supplied institutional template, not a slide deck. Outputs include `2403AI03_MLProject.pdf` (report) and `2403AI03_MLProject_Poster.pdf` / `.pptx` (single-page poster). Use `--report-only` for the report independently. See [poster specification](docs/poster.md) and [viva guide](docs/viva.md).
 
 ## Attribution
 

@@ -1,6 +1,10 @@
 {
   "author": "Umang Khatri",
   "roll_number": "2403AI03",
+  "email": "umang_2403ai03@iitp.ac.in",
+  "affiliation": "Department of Computer Science and Engineering, Indian Institute of Technology Patna",
   "task": "binary fracture-region segmentation",
-  "ppt_guidelines_pending": true
+  "deliverable": "poster",
+  "poster_template": "assets/poster_template.pptx",
+  "ppt_guidelines_pending": false
 }

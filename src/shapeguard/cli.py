@@ -131,6 +131,12 @@ def main():
     reports.add_argument("--roll-number")
     reports.add_argument("--submission", default="submission.json")
     reports.add_argument("--report-only", action="store_true")
+    poster = commands.add_parser("poster")
+    poster.add_argument("--study", default="results/binary_study")
+    poster.add_argument("--manifest", default="data/prepared/manifest.csv")
+    poster.add_argument("--output", default="deliverables")
+    poster.add_argument("--template")
+    poster.add_argument("--submission", default="submission.json")
     args = parser.parse_args()
     try:
         result = dispatch(args)
@@ -203,4 +209,13 @@ def dispatch(args):
         roll = args.roll_number or metadata.get("roll_number")
         if roll and not all(character.isalnum() or character in "_-" for character in roll):
             raise ValueError("Roll number must be safe for a filename (letters, numbers, underscores or hyphens)")
-        return deliverables(args.study, args.manifest, args.output, author, roll, args.report_only)
+        poster_mode = metadata.get("deliverable") == "poster"
+        result = deliverables(args.study, args.manifest, args.output, author, roll, args.report_only or poster_mode)
+        if poster_mode and not args.report_only:
+            from shapeguard.reporting.poster import poster
+            result.update(poster(args.study, args.manifest, args.output, metadata["poster_template"], author, roll, metadata.get("email", ""), metadata.get("affiliation", "")))
+        return result
+    if args.command == "poster":
+        from shapeguard.reporting.poster import poster
+        metadata = json.loads(Path(args.submission).read_text())
+        return poster(args.study, args.manifest, args.output, args.template or metadata["poster_template"], metadata["author"], metadata["roll_number"], metadata.get("email", ""), metadata.get("affiliation", ""))

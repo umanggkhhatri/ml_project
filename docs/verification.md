@@ -4,7 +4,7 @@ Verified locally on Apple M1 / macOS with Python 3.11.17 and the dependency vers
 
 ## Binary-study update
 
-The professor-approved main scope is binary fracture-region segmentation. The local suite now has **46 passing tests**, including explicit CUDA index selection, completed-document limits, and GradScaler overflow behavior. Ruff checks pass. Submission identity is Umang Khatri / 2403AI03; revised PPT requirements are pending.
+The professor-approved main scope is binary fracture-region segmentation. The numerical training suite includes explicit CUDA index selection and GradScaler overflow behavior. Poster tests verify a single PDF page, single editable poster slide, text bounds, preserved branding/template dimensions and removal of sample sensor content. Ruff checks pass. Submission identity is Umang Khatri / 2403AI03. The updated deliverable is a poster using the uploaded institutional template; there is no final slide deck.
 
 The institute A100 CUDA environment has been established in an isolated project directory. A full-data runtime preflight used approximately 940 MB allocated / 1,244 MB reserved PyTorch memory. The common study budget is 16 epochs, fixed before comparative test evaluation. The original first attempt stopped during baseline training because strict clipping incorrectly rejected a recoverable FP16 overflow. Its artifacts and checkpoint are preserved separately and will not be included in comparisons. The corrected code lets GradScaler skip overflowing updates, logs skipped steps, and retains the strict float32 nonfinite-gradient guard.
 
