@@ -94,8 +94,16 @@ def poster_content(main, comparisons, best, frame):
     proposed, ici = by_name.loc["proposed"], by_name.loc["ici_2d_adaptation"]
     paired = next(r for r in comparisons if r["comparison"] == "Combined vs ICI")
     interval = paired["ci95"]
-    ci = f"95% CI [{number(interval[0])}, {number(interval[1])}]" if interval else "CI unavailable"
-    conclusion = f"Combined Dice+ {number(proposed.fracture_positive_dice)} vs ICI {number(ici.fracture_positive_dice)}. Delta {number(paired['difference'])}; {ci}. Controlled gains may be mixed; no clinical validation."
+    qualification = "CI crosses zero" if interval and interval[0] <= 0 <= interval[1] else "positive paired CI" if interval and interval[0] > 0 else "negative/unavailable CI"
+    findings = {r["comparison"]: r for r in comparisons}
+    boundary = findings.get("C2 scale control")
+    consistency = findings.get("C3 compute control")
+    notes = []
+    if boundary:
+        notes.append("Adaptive bands improved their control." if boundary["difference"] > 0 else "Adaptive bands did not improve their control.")
+    if consistency:
+        notes.append("JS reduced clean Dice." if consistency["difference"] < 0 else "JS improved clean Dice.")
+    conclusion = f"Combined vs ICI Dice+: {number(proposed.fracture_positive_dice)} vs {number(ici.fracture_positive_dice)}; {qualification}. " + " ".join(notes) + " False positives remain high. Not clinically ready."
     return {
         "TextBox 9": "Abstract",
         "TextBox 11": f"We study binary fracture-region segmentation using {len(frame):,} audited FracAtlas v7 X-rays. Geometry-adaptive supervision, scale-adaptive boundary weighting and contrast consistency extend an ICI-inspired 2D U-Net. Controlled ablations test each modification. Best observed seed-42 positive-image Dice: {number(best.fracture_positive_dice)} ({SHORT_LABELS.get(best.experiment, best.experiment)}). This research prototype is not clinically validated.",
@@ -166,8 +174,8 @@ def poster_results(path, main, evaluations, manifest):
         axis.imshow(array[y0:y1, x0:x1], cmap="gray")
         axis.set_title(title, fontsize=10)
         axis.axis("off")
-    fig.suptitle(f"Median-positive example: {row.image_id}, Dice {row.dice:.3f}\nVisualization crop only; not used for inference", fontsize=9, y=0.01)
-    fig.tight_layout(rect=(0, 0.04, 1, 1), h_pad=0.6)
+    fig.text(0.5, 0.02, f"Median-positive example: {row.image_id}, Dice {row.dice:.3f}\nVisualization crop only; not used for inference", fontsize=9, ha="center", va="bottom")
+    fig.tight_layout(rect=(0, 0.10, 1, 1), h_pad=0.6)
     fig.savefig(path, dpi=220)
     plt.close(fig)
     return {"image_id": row.image_id, "dice": float(row.dice), "selection": "median positive-image Dice, deterministic", "crop": [y0, y1, x0, x1]}

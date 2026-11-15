@@ -1,0 +1,25 @@
+{
+  "template_sha256": "76039e9f0002cf751a1f38b258664aca7a2f052c8a60cbb290ce4bdaa0a0b5c9",
+  "template_size_inches": [
+    13.3333333333,
+    7.5
+  ],
+  "pages": 1,
+  "editable_slides": 1,
+  "example": {
+    "image_id": "IMG0000144",
+    "dice": 0.3347953216374269,
+    "selection": "median positive-image Dice, deterministic",
+    "crop": [
+      58,
+      137,
+      240,
+      307
+    ]
+  },
+  "author": "Umang Khatri",
+  "roll_number": "2403AI03",
+  "email": "umang_2403ai03@iitp.ac.in",
+  "affiliation": "Department of Computer Science and Engineering, Indian Institute of Technology Patna",
+  "figures_note": "Actual completed-study metrics; original template retained unchanged."
+}

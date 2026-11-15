@@ -1,0 +1,661 @@
+{
+  "files": [
+    {
+      "source": "runs/binary_study/baseline/seed_42/history.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/history.csv",
+      "sha256": "388310273830ff3187167e432485ea916f9c6d597a0aeac2498d2815e93c3187"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/baseline/seed_42/config.yaml",
+      "sha256": "231fa53525b639c911cb832fa896870964d87613d42d48f41ac77758ab2959b4"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/baseline/seed_42/training_summary.json",
+      "sha256": "f7b7146315b84b15abbb8a4d1819545e7c042af8d2a9e5940eefb7eebc14eeb6"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/class_summary.csv",
+      "sha256": "f6a3a1cbab319b2e757f095decce49b1e5c2dbb03e08aa5e7d95d0ae6fef020f"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/per_class_metrics.csv",
+      "sha256": "f958fc6d1213aad7a5114dc2b368e9e3f21bfa9252b24ff9d26222aeb1685690"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/fracture_metrics.csv",
+      "sha256": "0c0187e76c37ca1b368dab741810b45a0d3167cfaccacca29a2b11d635421be5"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/instances.csv",
+      "sha256": "42b4093e0bca96f3e320ad25cfcd7991a9d9c4c3c14b4baab5ab29001764487c"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/detections.csv",
+      "sha256": "b488712eb0ba80ed43c695970a57bf73ccdc355bba7b901d0995048280fcba92"
+    },
+    {
+      "source": "runs/binary_study/baseline/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/baseline/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/history.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/history.csv",
+      "sha256": "8f0076febaeb2948cc1cb963a8b4c30c1d1adab4ac281de877239344da382ff2"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/config.yaml",
+      "sha256": "a700db5238b4270de0aa3ad89a8813947c236ed813225e08558b575696c94939"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/training_summary.json",
+      "sha256": "680097ab247fa288afcb4cbdbc79313d14edf5e8242feac532937f5ff08e88aa"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/class_summary.csv",
+      "sha256": "63e73c6bef434cf5d0dd9f74cea8d77f981f0c67d54896932f62470bcd7bd473"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/per_class_metrics.csv",
+      "sha256": "09c02d2e1abeeeb642ef34d735d8474b5ddba8b3fb6ee045e649f9743b3d3be9"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/fracture_metrics.csv",
+      "sha256": "4d04daedfc1d5db420c218998d8cd2a17d0520734608dd92e304724891dc4725"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/instances.csv",
+      "sha256": "c4235d0649d818e0a60eb156329372b5c1df53bcead9bbd7c5f48a3719cb235f"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/detections.csv",
+      "sha256": "b0e1a972e1a13f013a4412531911191cdde086967787ff8ef29d25c5e5102401"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test/robustness.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_42/robustness.csv",
+      "sha256": "afb06c9a1e8e977d428317810fd5c3565c73e66cda06498a8b6738f025b7f52e"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/history.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/history.csv",
+      "sha256": "dc32dca7c1b9a81d202e42be85ed93fcee5f11b7575fe24fb195b423d29fb9c4"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/config.yaml",
+      "sha256": "f057e107f3e267ee7764f9202a2b49a0543f860155f464a1fee194e04d8172bb"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/training_summary.json",
+      "sha256": "b923e11f6a7e9bbb968abee0e599656c1f3ed7664d99284de5f6362649bb590c"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/class_summary.csv",
+      "sha256": "94faf11c230718dab9f2e12a7fec4c04f33f23d945703adeb02d1e06f37a56d1"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/per_class_metrics.csv",
+      "sha256": "dfcb4ae5c58f43626c60a97deb8fd08b01af0d7b9a7d6c303cf8136c5fc1461d"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/fracture_metrics.csv",
+      "sha256": "5ff33666d9e927fdf2b0e13830ff2312cad56cae68e663e056aabdfe54f5fcad"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/instances.csv",
+      "sha256": "d0ade6e8b610b5f2dacec25905bb129bb15615bae245759a32cc48208dc01c3c"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/detections.csv",
+      "sha256": "f227f73d7e5a55ac39eb0369aa4a5c718f182aed106d07bdd2dacb7430dc86fe"
+    },
+    {
+      "source": "runs/binary_study/geometry_square_control/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/geometry_square_control/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/history.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/history.csv",
+      "sha256": "e3bb2a8cac6dcd17a455ba1abba5726f36dbd85fba25577dc9b07f092430d84c"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/geometry/seed_42/config.yaml",
+      "sha256": "c3141d0d0414a9a39eb449ca8810edfe3a4264b24f595671c4baeaf8d94b9959"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/geometry/seed_42/training_summary.json",
+      "sha256": "1796805916e7ac8f1659beb5d5bc216007f2b1c3d030c08f3dd71ca2750e2875"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/class_summary.csv",
+      "sha256": "6823fcfdb091d9f24336e2759c9ee234086bfd3231e654fc5bc4fbe24d04598a"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/per_class_metrics.csv",
+      "sha256": "ac3fb3950415c77b7d61044cb8fe37509a3bb6879fe4a2ab1a90863e2f2cb36b"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/fracture_metrics.csv",
+      "sha256": "11b68715ec5d1fd852d84a485bf2a653a04d3a11d011854cafc6d181f4c818d6"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/instances.csv",
+      "sha256": "10adb69b0423dabfbe00d10cfcb66c9009434b03340c876d9febb3c9a31b6341"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/detections.csv",
+      "sha256": "65c969c7d77c155ae64b1141dff1bb150cc0e3cb1da35fb94e41ab8f7685bea2"
+    },
+    {
+      "source": "runs/binary_study/geometry/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/geometry/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/history.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/history.csv",
+      "sha256": "b66b597563d3944d3e7993a4247d4cff4a885bfc024cf64cff43272bc6f46362"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/config.yaml",
+      "sha256": "b30c4b947aa5e2d9237f767b5e0f577d3afebe9afeb08c3091ceb0231be0e0ff"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/training_summary.json",
+      "sha256": "ed586b35d0ef76f8ead1e71813daf9c25bcfc1d0ef0376ec4da5a5526c3552ab"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/class_summary.csv",
+      "sha256": "2e1cf5dd7f0b953e50b00cbca9fc0f455978823629e600c5cce11ec50d577d95"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/per_class_metrics.csv",
+      "sha256": "c519bde2bce6596e396246edfa21c790795d159ba5756dba1ab49bda284930c0"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/fracture_metrics.csv",
+      "sha256": "ba9913f277a72f4938c27abfa832c1f51c7971ec09d050a5a471879952c186cf"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/instances.csv",
+      "sha256": "b71fcdb738cd270bb6bffdf65ac20f7ff4ce49e99fedf4684201bcec56c5c2d3"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/detections.csv",
+      "sha256": "807c4698e7672afe622c94c53a46c3f461a6f05feb6394222d6cf0f89bcdd720"
+    },
+    {
+      "source": "runs/binary_study/boundary_fixed/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/boundary_fixed/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/history.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/history.csv",
+      "sha256": "f93995b0e98516a07b699dc61a2dbc98be3031ed72697b16a3f4f0c739694ece"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/config.yaml",
+      "sha256": "7357130734f2d0f28b5d851ec8817176a566f04b402d4e8aab21ba8436c75263"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/training_summary.json",
+      "sha256": "0bf8f07bab213886f7305befd104bd38fc71640a5be5899c4c57b9bd2fba40ab"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/class_summary.csv",
+      "sha256": "0dde939cf13f274bf907244175fe9986eca2497c588d58c866b14197a41233ed"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/per_class_metrics.csv",
+      "sha256": "c98005223c3632f7943ff820fd75949b3463e58d0a38378fae466fbe2bac45e5"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/fracture_metrics.csv",
+      "sha256": "626ba748d9b54e0329c1a36a629b562e4fcb1e154d752f61bc87592edd9aac54"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/instances.csv",
+      "sha256": "e9ad461fcda637c9c6cfbf83a3020866a5bd756c2ed272a92503a83a5131038f"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/detections.csv",
+      "sha256": "66056dc680ad9419bfc5eb37b984d65e93b14c99f10f161f516a2e555f5404a2"
+    },
+    {
+      "source": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/boundary_adaptive/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/history.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/history.csv",
+      "sha256": "1fd2a6738c20d5f7f8ec737d7618b6b0aed2052ffa63b476ee54d29ed2767489"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/proposed/seed_42/config.yaml",
+      "sha256": "790859e4e3eddb795d2661f588e1c56a2c22cd822fbfbe85ba3c527b99903b85"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/proposed/seed_42/training_summary.json",
+      "sha256": "1e30f8fb2346a8427542797400c7dcbfbbb540515d81e546684be9abe8db82c9"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/class_summary.csv",
+      "sha256": "c5ededcbc193a9d76cefb13e5a5570b5c057f1f6595596d865f0830e102dc64f"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/per_class_metrics.csv",
+      "sha256": "43ae5f13b07ec14039d493efe5ccd559db1e00b2cfd54b065a8cc7e9caef59ca"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/fracture_metrics.csv",
+      "sha256": "ef7ff1ea066c317e4ddd21dcfa856633b5012ef4779218c9f4f5da085a17d72d"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/instances.csv",
+      "sha256": "78321429f34fd9540725e6b9f0930c78454116e0d63b3e75c2440e0506778e6f"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/detections.csv",
+      "sha256": "2078f3d59d543b8e1eb7027f81a91281d2605b443c31f6601ede4f8bf015b5cc"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_42/evaluation_test/robustness.csv",
+      "export": "results/binary_study/experiments/proposed/seed_42/robustness.csv",
+      "sha256": "f8d8be9f68bc454560cc98df5d86233bdef17f1ae2e8410a54e2f1aa17b1e1d2"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/history.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/history.csv",
+      "sha256": "0a247e898a029d149716cf237cf3d9af63474f277e50edafd044c35438f0a4b0"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/config.yaml",
+      "sha256": "b641b509f936de6c0e4076ad28e50b11947f640917cb42085a4e2c363433559a"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/training_summary.json",
+      "sha256": "7efdfdf0f836ac1b7e74fc2ff4220e72be7c5157fa199d8afd1ce8bfd20bbd5c"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/class_summary.csv",
+      "sha256": "8552d7ba09a98719bcad5630c628a4d5cd2b3e3aa9fba1472adeffbdeb74170e"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/per_class_metrics.csv",
+      "sha256": "0c43047fd3b5959c62111fe64a167faa3d7f008e815885848f2c0958c97597db"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/fracture_metrics.csv",
+      "sha256": "810f225f34ac8b4907b3dd5b81ccac91db3a25a16b210ca13365f30874b6fb37"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/instances.csv",
+      "sha256": "0b65a91784d7dd161d5dfce1db2ffe9b6717ba41e84ff3dedcd2f1219d00c2d0"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/detections.csv",
+      "sha256": "1f4285b4bfe5954eef19075f31cd62109ec4020131bc486fcb79038879ba4902"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/contrast_control/seed_42/evaluation_test/robustness.csv",
+      "export": "results/binary_study/experiments/contrast_control/seed_42/robustness.csv",
+      "sha256": "fd0739e58cc01a20a01c4eb5133f3270b46451a955d5c63d59ed14e7fe2976a0"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/history.csv",
+      "export": "results/binary_study/experiments/full/seed_42/history.csv",
+      "sha256": "ad344c45778e08136b4c2a8a9d70f89237a6bb8e122875adab705b3815a95060"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/full/seed_42/config.yaml",
+      "sha256": "76166f26e96c855f8d45e1de327c2b6c2d75c95d5103f8b920f8a552ede91947"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/full/seed_42/training_summary.json",
+      "sha256": "826552169e35287b4742efb37dd49c58d44f491d8c06966e4d1063cd2f9d6e72"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/full/seed_42/class_summary.csv",
+      "sha256": "79f1ffd8870e589130bce02619f10231fb79bae0b1445fffa1e89b68bd53de96"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/full/seed_42/per_class_metrics.csv",
+      "sha256": "e8ac10fcfd2a2b5c80bf11446cd783d8ef1b3922f8b753615c723452e3833a7a"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/full/seed_42/fracture_metrics.csv",
+      "sha256": "a15c87d44763b21f8bf715d837311d1c011f32bdfd4dd09844d9489531845f9f"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/full/seed_42/instances.csv",
+      "sha256": "6b051b5d450195dc8ebd06fcc6f81ab2c82567fd6a78ca660850b6c49876c988"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/full/seed_42/detections.csv",
+      "sha256": "bf929fe6eb24aa3fefc11ee88de80a57e6fd25fb6ff246eac8e0b2556ab99f03"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/full/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/full/seed_42/evaluation_test/robustness.csv",
+      "export": "results/binary_study/experiments/full/seed_42/robustness.csv",
+      "sha256": "4b025a95026e7ff709b0c430f4bf795ee80ac66aa8252dbb7355f8dc53d0b887"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/history.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/history.csv",
+      "sha256": "79180edb46c53ebb386c5813c3a8ac2ee0cf744fd21765b8263358f9d5339f36"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/config.yaml",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/config.yaml",
+      "sha256": "4fe22d445c71c2f1202b0764b7b6b2a11557a169cdcae0b0fe0a86ab2447988c"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/training_summary.json",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/training_summary.json",
+      "sha256": "3fb753ca9f2a17360e8eb7cb4edc80de0d785d5c0001f04fad63de5263458847"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/class_summary.csv",
+      "sha256": "941efef8a7e5d38ea968de86f84f0385b6dd78168801a43b4cddbc2065da3589"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/per_class_metrics.csv",
+      "sha256": "96dd2992341e9dfd8752739ea803ff589dc9a675faf0e4d934e06b2b91a0550a"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/fracture_metrics.csv",
+      "sha256": "ea966d88c70358698e3b34cf2f89908a6f9168c0cff5f2376bc3f6a7858e5526"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/instances.csv",
+      "sha256": "5b661fcb4a1260d97d578e4bec298f8adad16630b135153281a5bf46aff96b96"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/detections.csv",
+      "sha256": "c39311b0a6b1e8480fc6cc8b04ba2426f5aa6771b1e9edd18a3541019c481a75"
+    },
+    {
+      "source": "runs/binary_study/attention_unet/seed_42/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/attention_unet/seed_42/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/history.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/history.csv",
+      "sha256": "b738e8fb5e69037bd54e5ab20d9e869299353ed6700e44517c0fef0ebbfa9ed6"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/config.yaml",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/config.yaml",
+      "sha256": "9f31a8238193e77d0d4c1190af494e351170c228d1b18fb7084aade4e37a5ebf"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/training_summary.json",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/training_summary.json",
+      "sha256": "2c83e5fe99034d23a6605e5327c5efad664efa63bf11bc0bc90748576752f7d8"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/class_summary.csv",
+      "sha256": "e5dd5293b205b8fd48fe065c622d20adac3976cf77b501563a21432d92f73d7c"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/per_class_metrics.csv",
+      "sha256": "b96c96b058d75e41016411addd94fed30549510e72eb82bee525f79b580b96f1"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/fracture_metrics.csv",
+      "sha256": "79ac2d2fa4649762be3832ab7a8a1597ba63c4f39246de4a6814fc3f5ed97cfa"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/instances.csv",
+      "sha256": "8dc3d66bc5b8f9f5c40764c14ed291a03951a868ca071fe6e196e2ff8bac7a36"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/detections.csv",
+      "sha256": "520cf579405d9cbd18b0523d480ee417a90768261daa09ab019df80292f21a74"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_7/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/history.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/history.csv",
+      "sha256": "56de3091742358f1639a62e9e21b3968c893a56808579b95119d5fcac569c4f5"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/config.yaml",
+      "export": "results/binary_study/experiments/proposed/seed_7/config.yaml",
+      "sha256": "46c5acf246c2ba1bff41015dbda24dc04abcc2ce96c86a14df803ab71cda34f4"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/training_summary.json",
+      "export": "results/binary_study/experiments/proposed/seed_7/training_summary.json",
+      "sha256": "10acd66656353e7a819bf8c62a9542496d1e9074c9eb04b0f08805aea46334c5"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/class_summary.csv",
+      "sha256": "25440089bafa2f1d55970383e8858c56b5a4e3f3d9952b80593fc0957a5dcb67"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/per_class_metrics.csv",
+      "sha256": "9a5143a90508ddeb67991bacf710467d1ddfe7caf66030a3fce4a1fbfc632bcf"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/fracture_metrics.csv",
+      "sha256": "77a8b47985856c0f19f0c1c2e6c094276a4cfdd1ece54a4c52092f43f3c2868d"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/instances.csv",
+      "sha256": "546c59eda6ced5007e86ce271d5d9fd526ad9e03da0e1fa15cc9e86f29da821e"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/detections.csv",
+      "sha256": "449da3b01bfc673d34d0e8486a6979c58de0a13708978d3bd6bdac92b7bfd379"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_7/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/proposed/seed_7/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/history.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/history.csv",
+      "sha256": "03d6c2cea37ac4b0865d2899089a2899ac3e27aabb64bd0f99a2a259cf682747"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/config.yaml",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/config.yaml",
+      "sha256": "079c30765eb389236a1bae9ae3092b9b524fd3cdb4ab040a99efddafc88182c9"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/training_summary.json",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/training_summary.json",
+      "sha256": "00c948024ba7bf1d99b15ebb092179c1b1945ae9baa2ee6e26718226eb525295"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/class_summary.csv",
+      "sha256": "da18814d15cd0f8b8f7079f697732a263ccc9b2c188dc3b7cb563d893201da24"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/per_class_metrics.csv",
+      "sha256": "166e9253053dd1944a9665ec8a6ebee8dde6e5bcaba5248cc0bfaa395514d2bc"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/fracture_metrics.csv",
+      "sha256": "e08cf099e43b57845ffdf00376f0b5e67c120ae76fc16af4d35d796dddb38302"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/instances.csv",
+      "sha256": "1779e2e278e1b1d9e237069c6860ee23cc63fc2c7d2b1f339846ea8aacecc8b7"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/detections.csv",
+      "sha256": "d67257e8a0c4fbf25534c657f9d4b0ee7eee4047e30ddc9c2256b3e4b38aab02"
+    },
+    {
+      "source": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/ici_2d_adaptation/seed_123/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/history.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/history.csv",
+      "sha256": "02da32777ee2a898ecc0b062955acc907d2d9952d48d20cf8f5ee0acca937fbc"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/config.yaml",
+      "export": "results/binary_study/experiments/proposed/seed_123/config.yaml",
+      "sha256": "51973e1d0b382a49b1af45887d66787783e013ac5e790f15bf880074e96af952"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/training_summary.json",
+      "export": "results/binary_study/experiments/proposed/seed_123/training_summary.json",
+      "sha256": "56625f90d0a857bc47f6c4971ad23dc624a997b576550e21ed3200723fe14935"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/evaluation_test/class_summary.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/class_summary.csv",
+      "sha256": "2345c3d2bae4aab61ede001e3b36df4d1edb426617733da113a8f1a4045f48b2"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/evaluation_test/per_class_metrics.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/per_class_metrics.csv",
+      "sha256": "8f77b52da938d740966a02b9f9ab2080508cb35384e992a6560e02ac747e836e"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/evaluation_test/fracture_metrics.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/fracture_metrics.csv",
+      "sha256": "63e4e712a5982236ed6bbebcd7ce076e72b39bf6b4f984c8acb7fe28af4f9485"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/evaluation_test/instances.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/instances.csv",
+      "sha256": "f86e69d4b069d5676bf06cb79755897ed22321c15b827a79881711f73cf2528e"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/evaluation_test/detections.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/detections.csv",
+      "sha256": "f2bca5613543c9f9d787dcf12bed6e8b06829918535ec5aeabb86c96ffab59e9"
+    },
+    {
+      "source": "runs/binary_study/proposed/seed_123/evaluation_test/resize_audit.csv",
+      "export": "results/binary_study/experiments/proposed/seed_123/resize_audit.csv",
+      "sha256": "3e38224e988b75508a7e3cf5efb4048ee080a5800a75a53c2ab0e70145e1f8c3"
+    }
+  ],
+  "summary_metadata_correction": "Removed legacy bone_annotation_note and clarified binary annotation provenance. Numerical results unchanged.",
+  "excluded": [
+    "raw dataset images",
+    "predicted mask arrays",
+    "checkpoints",
+    "SSH credentials and commands"
+  ]
+}

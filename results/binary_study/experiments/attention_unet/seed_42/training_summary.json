@@ -1,0 +1,5 @@
+{
+  "epochs_completed": 16,
+  "best_validation_score": 0.2957690534050839,
+  "early_stopped": false
+}

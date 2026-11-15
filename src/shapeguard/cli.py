@@ -137,6 +137,8 @@ def main():
     poster.add_argument("--output", default="deliverables")
     poster.add_argument("--template")
     poster.add_argument("--submission", default="submission.json")
+    exporting = commands.add_parser("export-metrics")
+    exporting.add_argument("--study", default="results/binary_study")
     args = parser.parse_args()
     try:
         result = dispatch(args)
@@ -219,3 +221,6 @@ def dispatch(args):
         from shapeguard.reporting.poster import poster
         metadata = json.loads(Path(args.submission).read_text())
         return poster(args.study, args.manifest, args.output, args.template or metadata["poster_template"], metadata["author"], metadata["roll_number"], metadata.get("email", ""), metadata.get("affiliation", ""))
+    if args.command == "export-metrics":
+        from shapeguard.reporting.export import export_metrics
+        return str(export_metrics(args.study))

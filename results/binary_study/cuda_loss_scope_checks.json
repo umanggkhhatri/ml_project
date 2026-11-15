@@ -1,0 +1,44 @@
+[
+  {
+    "variant": "geometry_square",
+    "loss": 2.4731457233428955,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  },
+  {
+    "variant": "geometry",
+    "loss": 2.037134885787964,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  },
+  {
+    "variant": "boundary_fixed",
+    "loss": 2.2845804691314697,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  },
+  {
+    "variant": "boundary_adaptive",
+    "loss": 2.137526035308838,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  },
+  {
+    "variant": "proposed",
+    "loss": 2.3239827156066895,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  },
+  {
+    "variant": "contrast_control",
+    "loss": 2.2369801998138428,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  },
+  {
+    "variant": "full",
+    "loss": 2.458240032196045,
+    "amp_update_skipped": false,
+    "finite_parameters": true
+  }
+]

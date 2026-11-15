@@ -1,0 +1,53 @@
+{
+  "comparisons": [
+    {
+      "comparison": "C1 vs ICI",
+      "difference": 0.04184897270963772,
+      "ci95": [
+        0.0057884110111430485,
+        0.07735319578922588
+      ],
+      "interpretation": "positive conditional evidence"
+    },
+    {
+      "comparison": "C1 geometry control",
+      "difference": -0.03268733220322351,
+      "ci95": [
+        -0.06619180126069514,
+        0.0008857920542370192
+      ],
+      "interpretation": "no clear positive difference"
+    },
+    {
+      "comparison": "C2 scale control",
+      "difference": 0.056545672791769586,
+      "ci95": [
+        0.02264817183100383,
+        0.08892378000848573
+      ],
+      "interpretation": "positive conditional evidence"
+    },
+    {
+      "comparison": "Combined vs ICI",
+      "difference": 0.024984008586185547,
+      "ci95": [
+        -0.010397156269275194,
+        0.05853783453018707
+      ],
+      "interpretation": "no clear positive difference"
+    },
+    {
+      "comparison": "C3 compute control",
+      "difference": -0.030362609411622887,
+      "ci95": [
+        -0.05891596691492747,
+        -0.001297361178874232
+      ],
+      "interpretation": "negative conditional evidence"
+    }
+  ],
+  "best_observed_test_configuration": "geometry_square_control",
+  "report_pages": 8,
+  "slides": 0,
+  "roll_number_missing": false
+}

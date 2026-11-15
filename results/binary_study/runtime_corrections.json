@@ -1,0 +1,11 @@
+{
+  "correction": "Model-only autocast; local BCE/JS and all objective arithmetic outside context in float32.",
+  "retained_completed_runs": [
+    "baseline seed42",
+    "ICI adaptation seed42"
+  ],
+  "reason": "Completed baseline/ICI objectives already used float32; no hyperparameter or mathematical objective change.",
+  "excluded_attempt": "Square control stopped before first completed epoch/checkpoint; artifacts preserved under runs/failed_autocast_bce.",
+  "corrected_train_py_sha256": "a82ffea928403fdd203c0faa7838e5f65046309502ff3619a98375ce2ead881a",
+  "gpu_loss_scope_checks": "cuda_loss_scope_checks.json"
+}

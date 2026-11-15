@@ -2,6 +2,19 @@
 
 Verified locally on Apple M1 / macOS with Python 3.11.17 and the dependency versions recorded in `uv.lock` and run environment artifacts.
 
+## Final completed verification
+
+- All 14 GPU runs completed, including three ICI/proposed seeds and all matched controls.
+- The comparison table, per-run metrics, training curves, robustness analyses and bootstrap intervals are generated from actual checkpoints/evaluations.
+- 50 local tests pass; Ruff checks pass.
+- The actual report contains 8 pages; the poster PDF contains 1 page; the editable poster contains 1 slide.
+- A real proposed-model checkpoint successfully performs native-resolution image-only inference on Mac MPS.
+- Poster/report were visually inspected. The poster preserves the supplied institutional layout/logos and uses the confirmed author/roll/email/affiliation.
+- Source datasets, checkpoint binaries and SSH credentials are excluded from public Git artifacts.
+- Results are mixed and false positives are high; see `docs/results.md`. No clinical or SOTA claim is made.
+
+The historical planning/failure notes below are retained for transparency and do not describe unfinished final runs.
+
 ## Binary-study update
 
 The professor-approved main scope is binary fracture-region segmentation. The numerical training suite includes explicit CUDA index selection and GradScaler overflow behavior. Poster tests verify a single PDF page, single editable poster slide, text bounds, preserved branding/template dimensions and removal of sample sensor content. Ruff checks pass. Submission identity is Umang Khatri / 2403AI03. The updated deliverable is a poster using the uploaded institutional template; there is no final slide deck.

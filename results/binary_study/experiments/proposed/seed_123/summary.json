@@ -1,0 +1,58 @@
+{
+  "experiment": "proposed",
+  "seed": 123,
+  "task": "binary",
+  "split": "test",
+  "checkpoint_sha256": "fe9eeb2b3a358cffcb4ab2b4453545a49cde97af9ee722853d93bb6342a1ebb2",
+  "manifest_sha256": "73500f0f30956c50a9977f3419f30be8c07e0b9422e2b7370a1ecef492766fa6",
+  "cohort_sha256": "286ac006b509552d0b35de7959aa2df8f1ebf64c1f62a60c00be3a1e87dd300a",
+  "fracture_positive_dice": 0.36453908355047815,
+  "fracture_dice_all_images": 0.15209607429612484,
+  "fracture_positive_iou": 0.2614578380283574,
+  "negative_image_fp_rate": 0.8939759036144578,
+  "size_thresholds_training_only": [
+    0.0019207451499118164,
+    0.0036733906525573184
+  ],
+  "efficiency": {
+    "parameters": 1811746,
+    "float32_parameter_bytes": 7246984,
+    "conv_macs": 6782976000,
+    "conv_flops": 13565952000,
+    "flops_note": "Convolution-only estimate, 2 FLOPs/MAC; excludes normalization, interpolation, activations and attention products.",
+    "latency_median_ms": 7.235263008624315,
+    "latency_mean_ms": 8.374244215277335,
+    "latency_p95_ms": 13.665241887792945,
+    "batch_size": 1,
+    "input_size": 384,
+    "device": "cuda:0",
+    "repeats": 30,
+    "timing_scope": "model only, float32, warmed up and synchronized",
+    "environment": {
+      "python": "3.11.18",
+      "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+      "packages": {
+        "torch": "2.15.0",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "pandas": "2.3.3",
+        "Pillow": "12.3.0",
+        "opencv-python-headless": "4.14.0.94"
+      },
+      "git_commit": null,
+      "source_code_sha256": "a66c9be0726a101394f1d420a9fa5936967272c1637db2972c1fef7f6ad9e6bb",
+      "device": "cuda:0",
+      "cuda_available": true,
+      "cuda_version": "13.2",
+      "gpu": "NVIDIA A100-PCIE-40GB",
+      "mps_available": false,
+      "reproducibility_note": "Fixed seeds do not guarantee bit-identical results across devices."
+    },
+    "checkpoint_bytes": 23321438,
+    "preprocessing_model_transfer_median_ms": 22.27933006361127,
+    "inclusive_timing_note": "Includes image, semantic/instance-mask loading, preprocessing, forward pass and prediction transfer; excludes writing predictions and metrics."
+  },
+  "empty_policy": "Both empty: Dice/IoU=1, HD=0. One empty: HD=inf; report infinite counts separately. Undefined precision/recall are NaN, not silently zero.",
+  "distance_units": "pixels at 384x384 letterboxed network resolution; not millimetres",
+  "annotation_provenance": "Original FracAtlas fracture polygons; no student bone annotations used in the binary study."
+}

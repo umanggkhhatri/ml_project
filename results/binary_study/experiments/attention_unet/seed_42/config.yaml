@@ -1,0 +1,51 @@
+name: attention_unet
+seed: 42
+device: cuda
+data:
+  manifest: data/prepared/manifest.csv
+  task: binary
+  size: 384
+  workers: 4
+  augment: true
+  contrast_augment: false
+  dual_view: false
+  sampling: balanced
+model:
+  architecture: attention_unet
+  widths:
+  - 16
+  - 32
+  - 64
+  - 128
+  - 256
+train:
+  epochs: 16
+  batch_size: 4
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  patience: 16
+  amp: true
+  output: runs/binary_study
+  threads: 4
+  selection: fracture_positive_dice
+  cuda_memory_fraction: 0.075
+loss:
+  ce: 0.5
+  class_weights:
+  - 1.0
+  - 10.0
+  dice: 1.0
+  instance: 0.0
+  center: 0.0
+  geometry: 0.0
+  geometry_mode: adaptive
+  boundary: 0.0
+  consistency: 0.0
+  center_size: 7
+  context: 0.25
+  boundary_mode: adaptive
+  boundary_scale: 1.0
+  fixed_tau: 3.0
+  tau_min: 1.0
+  tau_max: 8.0
+  threshold: 0.5

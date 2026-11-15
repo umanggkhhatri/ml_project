@@ -4,6 +4,20 @@ Modular Python research project for **binary fracture-region segmentation** of X
 
 The main study predicts **0 = non-fracture background (including bone)** and **1 = annotated fracture region**. This is pixel-level segmentation, not image-level classification. It uses FracAtlas's existing fracture masks; **bone annotations are not needed**. Multiclass annotation tools remain an optional extension. This is not a clinical diagnostic system.
 
+## Completed submission
+
+All **14 GPU runs** are complete. The final documents use actual results and explicitly report mixed contribution effects and high false-positive rates.
+
+- [Poster PDF](deliverables/2403AI03_MLProject_Poster.pdf) — one page, supplied IIT Patna template.
+- [Editable poster](deliverables/2403AI03_MLProject_Poster.pptx) — one poster slide, not a slide deck.
+- [Project report](deliverables/2403AI03_MLProject.pdf) — eight pages.
+- [Full comparison table](results/binary_study/comparison.csv), [interpretation](docs/results.md), and [public per-run numerical artifacts](results/binary_study/experiments/).
+- [Viva guide](docs/viva.md) and [mathematical justification](docs/mathematics.md).
+
+Best observed seed-42 positive-image Dice is **0.376** (square-local control). Across three seeds, the combined method averages **0.337** versus **0.280** for the ICI adaptation. The seed-42 combined comparison interval crosses zero; contrast consistency reduced clean-image Dice. **These results do not establish clinical readiness or uniformly successful improvements.**
+
+Model checkpoints and datasets are intentionally excluded from Git. The complete trained checkpoints remain in the local/server `runs/binary_study/` directories. Use the CLI and configurations to reproduce training, or inspect the exported numerical artifacts without training.
+
 ## Research scope
 
 Base paper: Rachmadi, Poon & Skibbe, [Instance-wise and Center-of-Instance (ICI) loss](https://proceedings.mlr.press/v227/rachmadi24a.html), PMLR 227 (2024; PDF describes the MIDL 2023 conference). Original code: [BrainImageAnalysis/ICI-loss](https://github.com/BrainImageAnalysis/ICI-loss).

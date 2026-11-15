@@ -129,7 +129,7 @@ def study_plots(study, main, evaluations, output):
     return output
 
 
-def build_report(path, main, comparisons, best, frame, figures_dir, evaluations, author, roll):
+def build_report(path, main, comparisons, best, frame, figures_dir, evaluations, author, roll, repeated=None):
     from reportlab.lib import colors
     from reportlab.lib.pagesizes import A4
     from reportlab.pdfgen import canvas
@@ -257,10 +257,15 @@ def build_report(path, main, comparisons, best, frame, figures_dir, evaluations,
         interval = "[" + ", ".join(number(v) for v in result["ci95"]) + "]" if result["ci95"] else "unavailable"
         y = paragraph(f"{result['comparison']}: Dice difference {number(result['difference'])}; paired bootstrap 95% interval {interval}; {result['interpretation']}.", y, size=9, leading=12)
     y = paragraph("Bootstrap resamples duplicate groups among positive test images. It measures conditional test-sample variability, not training-seed variability or patient-level uncertainty. Repeated ICI/proposed seeds are reported in the full table; avoid inferring clinical significance from a small interval alone.", y, size=9, leading=12)
-    rows = [[LABELS.get(row.experiment, row.experiment), f"{int(row.parameters):,}", number(row.conv_flops / 1e9, 2), number(row.latency_median_ms, 2)] for row in main.itertuples() if row.experiment in {"baseline", "ici_2d_adaptation", "proposed", "full", "attention_unet"}]
-    y = table(["Method", "Parameters", "Conv GFLOPs", "Latency ms"], rows, y, widths=[190, 100, 105, available - 395], size=8)
+    rows = [[LABELS.get(row.experiment, row.experiment), f"{int(row.parameters):,}", number(row.parameters * 4 / 1024**2, 2), number(row.conv_flops / 1e9, 2), number(row.latency_median_ms, 2)] for row in main.itertuples() if row.experiment in {"baseline", "ici_2d_adaptation", "proposed", "full", "attention_unet"}]
+    y = table(["Method", "Parameters", "FP32 MiB", "Conv GFLOPs", "Latency ms"], rows, y, widths=[170, 90, 65, 95, available - 420], size=8)
     y = paragraph("FLOPs are convolution-only (2 FLOPs/MAC); normalization, interpolation and attention products are excluded. Latency is batch-one float32, warmed and synchronized. The GPU is shared, so observed timing differences among identical U-Nets do not establish architectural speed gains. Loss-only changes add no inference module but increase training work.", y, size=9, leading=12)
+    boundary_rows = [[LABELS.get(row.experiment, row.experiment), number(getattr(row, "fracture_pixel_accuracy", np.nan)), number(getattr(row, "fracture_hausdorff_positive_finite_mean", np.nan), 1), number(getattr(row, "fracture_hd95_positive_finite_mean", np.nan), 1), str(int(getattr(row, "fracture_hd95_positive_infinite_cases", 0)))] for row in main.itertuples() if row.experiment in {"baseline", "ici_2d_adaptation", "proposed", "full"}]
+    y = table(["Method", "Pixel acc.", "HD+ finite", "HD95+ finite", "Inf. cases"], boundary_rows, y, widths=[170, 80, 85, 90, available - 425], size=8)
     y = paragraph("Boundary metrics: both-empty HD=0, one-empty HD=infinity. Report positive finite-case means together with missed/infinite counts; never silently discard failures. Units are pixels at 384-pixel letterboxed resolution, not millimetres.", y, size=9, leading=12)
+    if repeated is not None and len(repeated):
+        repeat_rows = [[LABELS.get(row.experiment, row.experiment), str(int(row.seeds)), number(row.dice_mean), number(row.dice_std)] for row in repeated.itertuples()]
+        y = table(["Repeated method", "Seeds", "Mean Dice+", "Sample SD"], repeat_rows, y, widths=[190, 75, 120, available - 385], size=8)
     document.showPage()
 
     y = page("Small instances, robustness and qualitative failures", 7)
@@ -272,7 +277,9 @@ def build_report(path, main, comparisons, best, frame, figures_dir, evaluations,
     document.showPage()
 
     y = page("Conclusion, limitations and references", 8)
-    y = paragraph(f"Best observed seed-42 test Dice within this measured study: {LABELS.get(best.experiment, best.experiment)} ({number(best.fracture_positive_dice)}). Component effects are described by their controlled comparisons above; non-positive effects remain negative findings. The framework supplies reproducible segmentation experiments and keeps inference architecture compact.", y, size=9, leading=12)
+    y = paragraph(f"Best observed seed-42 test Dice within this measured study: {LABELS.get(best.experiment, best.experiment)} ({number(best.fracture_positive_dice)}). Local supervision improved on the ICI adaptation, but aspect-ratio support did not establish an advantage over square support. Adaptive boundary weighting improved its fixed-width control. Contrast consistency reduced clean-image Dice versus equal two-view supervision. The combined seed-42 difference versus ICI has an interval crossing zero; positive repeated-seed differences do not remove that qualification.", y, size=9, leading=12)
+    y = paragraph("False positives and low pooled fracture precision remain major limitations. The reported overlap gains are modest; this model is not suitable for clinical deployment. No claim is made that every contribution improved accuracy, or that unmeasured state-of-the-art models were outperformed.", y, size=9, leading=12)
+    y = paragraph("Possible explanations, not causal proof: broader annotated regions may benefit from the square control's additional anatomical context, while consistency regularization may cost clean-image accuracy under the chosen mild perturbations. The small fixed budget and untuned loss weights also limit conclusions about architecture or optimization.", y, size=9, leading=12)
     y = paragraph("Limitations: no verified patient-level split; heterogeneous regions/projections; approximate source masks; possible resizing loss; detached connectivity/centroid operations; no exhaustive tuning; shared-GPU timing; synthetic rather than external-domain robustness; no clinical validation or proof of global novelty. Future work: independent-site testing, original-reference reproduction, larger repeat-seed studies and better label-quality analysis.", y, size=9, leading=12)
     y = heading("References", y)
     for index, reference in enumerate(REFERENCES, 1):
@@ -372,7 +379,9 @@ def deliverables(study="results/binary_study", manifest="data/prepared/manifest.
     stem = f"{roll}_MLProject" if roll else "ShapeGuardFrac_MLProject"
     report = output / f"{stem}.pdf"
     slides = output / f"{stem}.pptx"
-    build_report(report, main, comparisons, best, frame, plots, status["runs"], author, roll)
+    repeated = table[table.experiment.isin(["ici_2d_adaptation", "proposed"])].groupby("experiment").agg(seeds=("seed", "count"), dice_mean=("fracture_positive_dice", "mean"), dice_std=("fracture_positive_dice", "std")).reset_index()
+    repeated.to_csv(output / "repeat_seed_summary.csv", index=False)
+    build_report(report, main, comparisons, best, frame, plots, status["runs"], author, roll, repeated)
     if not report_only:
         build_slides(slides, main, comparisons, best, frame, plots, status["runs"], author, roll)
     table.to_csv(output / "complete_comparison.csv", index=False)

@@ -1,0 +1,7 @@
+{
+  "image_id": "IMG0000144",
+  "checkpoint": "proposed, seed 42, best-validation checkpoint",
+  "device": "mps",
+  "image_input_only": true,
+  "note": "Full-image inference followed by native-resolution probability interpolation. Research prototype, not a clinical diagnosis."
+}

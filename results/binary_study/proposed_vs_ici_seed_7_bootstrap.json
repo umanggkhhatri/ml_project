@@ -1,0 +1,14 @@
+{
+  "metric": "dice",
+  "difference_b_minus_a": 0.02439225688380312,
+  "ci95": [
+    -0.021954902544296703,
+    0.07092411404060427
+  ],
+  "images": 90,
+  "resampling_units": 83,
+  "samples": 2000,
+  "seed": 42,
+  "unit": "duplicate group (not patient; patient identifiers unavailable)",
+  "positive_only": true
+}

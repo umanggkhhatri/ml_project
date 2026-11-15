@@ -1,0 +1,162 @@
+{
+  "runs": [
+    {
+      "experiment": "baseline",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/baseline.yaml",
+      "seconds": 1309.5112069359748,
+      "seconds_this_invocation": 2.604660138953477,
+      "reused_existing_run": true,
+      "evaluation": "runs/binary_study/baseline/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "ici_2d_adaptation",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/ici.yaml",
+      "seconds": 2420.875426767976,
+      "seconds_this_invocation": 2.9315281249582767,
+      "reused_existing_run": true,
+      "evaluation": "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "geometry_square_control",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/geometry_square.yaml",
+      "seconds": 1622.9818542500725,
+      "seconds_this_invocation": 1622.9818542500725,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/geometry_square_control/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "geometry",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/geometry.yaml",
+      "seconds": 1577.7954406290082,
+      "seconds_this_invocation": 1577.7954406290082,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/geometry/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "boundary_fixed",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/boundary_fixed.yaml",
+      "seconds": 2065.420126971905,
+      "seconds_this_invocation": 2065.420126971905,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/boundary_fixed/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "boundary_adaptive",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/boundary_adaptive.yaml",
+      "seconds": 2070.38030915102,
+      "seconds_this_invocation": 2070.38030915102,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/boundary_adaptive/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "proposed",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/proposed.yaml",
+      "seconds": 2011.29657554999,
+      "seconds_this_invocation": 2011.29657554999,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/proposed/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "contrast_control",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/contrast_control.yaml",
+      "seconds": 3208.5648689840455,
+      "seconds_this_invocation": 3208.5648689840455,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/contrast_control/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "full",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/full.yaml",
+      "seconds": 3057.9264606799698,
+      "seconds_this_invocation": 3057.9264606799698,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/full/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "attention_unet",
+      "seed": 42,
+      "status": "completed",
+      "config": "configs/gpu/attention.yaml",
+      "seconds": 1265.5271252680104,
+      "seconds_this_invocation": 1265.5271252680104,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/attention_unet/seed_42/evaluation_test"
+    },
+    {
+      "experiment": "ici_2d_adaptation",
+      "seed": 7,
+      "status": "completed",
+      "config": "configs/gpu/ici.yaml",
+      "seconds": 1265.0734417480417,
+      "seconds_this_invocation": 1265.0734417480417,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test"
+    },
+    {
+      "experiment": "proposed",
+      "seed": 7,
+      "status": "completed",
+      "config": "configs/gpu/proposed.yaml",
+      "seconds": 1088.3869987979997,
+      "seconds_this_invocation": 1088.3869987979997,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/proposed/seed_7/evaluation_test"
+    },
+    {
+      "experiment": "ici_2d_adaptation",
+      "seed": 123,
+      "status": "completed",
+      "config": "configs/gpu/ici.yaml",
+      "seconds": 1316.9650607050862,
+      "seconds_this_invocation": 1316.9650607050862,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test"
+    },
+    {
+      "experiment": "proposed",
+      "seed": 123,
+      "status": "completed",
+      "config": "configs/gpu/proposed.yaml",
+      "seconds": 1309.079100820003,
+      "seconds_this_invocation": 1309.079100820003,
+      "reused_existing_run": false,
+      "evaluation": "runs/binary_study/proposed/seed_123/evaluation_test"
+    }
+  ],
+  "completed": true,
+  "active": null,
+  "evaluations": [
+    "runs/binary_study/baseline/seed_42/evaluation_test",
+    "runs/binary_study/ici_2d_adaptation/seed_42/evaluation_test",
+    "runs/binary_study/geometry_square_control/seed_42/evaluation_test",
+    "runs/binary_study/geometry/seed_42/evaluation_test",
+    "runs/binary_study/boundary_fixed/seed_42/evaluation_test",
+    "runs/binary_study/boundary_adaptive/seed_42/evaluation_test",
+    "runs/binary_study/proposed/seed_42/evaluation_test",
+    "runs/binary_study/contrast_control/seed_42/evaluation_test",
+    "runs/binary_study/full/seed_42/evaluation_test",
+    "runs/binary_study/attention_unet/seed_42/evaluation_test",
+    "runs/binary_study/ici_2d_adaptation/seed_7/evaluation_test",
+    "runs/binary_study/proposed/seed_7/evaluation_test",
+    "runs/binary_study/ici_2d_adaptation/seed_123/evaluation_test",
+    "runs/binary_study/proposed/seed_123/evaluation_test"
+  ]
+}
